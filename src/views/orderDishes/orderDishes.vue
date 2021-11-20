@@ -3,14 +3,15 @@
     <div class="personList" v-for="item in list" :key="item.id">
       <img :src="'http://47.96.65.127:5020/'+item.photo1" alt />
       <span class="name">{{item.realname}}</span>
-      <span class="level">高级助教</span>
-      <span class="price">100.00</span>
+      <span class="level">助教等级{{item.grade}}</span>
+      <span class="price">¥{{item.price}}</span>
       <button class="submit" @click="lookCoach(item)">查看</button>
     </div>
   </div>
 </template>
 
 <script>
+import moment from 'moment';
 import req from "../../api/request";
 export default {
   data() {
@@ -22,7 +23,7 @@ export default {
     req
       .post("/backapi/api/casher/getdayteacher", {
         data: {
-          riqi: "2021-11-19"
+          riqi: moment().format('YYYY-MM-DD')
         } 
       })
       .then(res => {
