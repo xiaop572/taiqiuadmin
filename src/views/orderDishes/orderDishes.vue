@@ -33,8 +33,8 @@ export default {
   methods: {
     lookCoach(row) {
       this.$router.push({
-        path: "/coachDetails",
-        query: {
+        name: "coachDetails",
+        params: {
           row
         }
       });
